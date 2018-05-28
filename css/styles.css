@@ -1,0 +1,25 @@
+/* changing the svg fill and width */
+svg {
+    fill:#353A40;
+    width: 1.8rem;
+    margin-right: 1em;
+    transition: color;
+}
+
+/* color change when hovered to the vector */
+svg:hover {
+    fill: #D0D0D0;
+    transition: fill 0.1s;
+    }
+/* 
+/* color for links */
+a:link {
+    color: #353A40;
+    background-color: transparent;
+    text-decoration: none;
+}
+a:visited {
+    color: lightslategrey;
+    background-color: transparent;
+    text-decoration: none;
+}

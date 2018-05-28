@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<!-- browser-sync start --server --files="**/*" -->
+
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <meta name="author" content="Jenny Li">
+        <title>Coffee Shops Around Seattle</title>
+
+        <!-- Bootstrap v4.1.0 CSS stylesheet -->
+        <link rel="stylesheet" href="css/styles.css">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4"
+            crossorigin="anonymous">
+        <link rel="stylesheet" href="https://unpkg.com/leaflet@1.3.1/dist/leaflet.css" 
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0/css/bootstrap.css">
+        <link rel="stylesheet" href="https://unpkg.com/leaflet@1.3.1/dist/leaflet.css" integrity="sha512-Rksm5RenBEKSKFjgI3a41vrjkw4EVPlJ3+OiI65vTjIdo9brlAacEuKOiQ5OFh7cOI1bkDwLqdLw3Zg0cRJAAQ=="
+            crossorigin="" />
+        <script src="https://unpkg.com/leaflet@1.3.1/dist/leaflet.js" integrity="sha512-/Nsx9X4HebavoBvEBuyp3I7od5tA0UzAxs+j83KgC8PU0kgB4XiK4Lfe4y4cgBtaRJQEIFCW+oC506aPT2L1zw=="
+            crossorigin=""></script>
+        <style>
+            #mapid {
+                height: 780px;
+            }
+        </style>
+    </head>
+
+    <body>
+        <div class="container">
+            <header class="blog-header py-4">
+                <div class="row flex-nowrap justify-content-between align-items-center">
+                <h3 class="col-4 text-left">
+                    <a class="blog-header-logo text-dark"><strong>Coffee Shops in Seattle</strong></a>
+                </h3>
+                <div class="col-4 d-flex justify-content-end align-items-center">
+                    <p id="vectors" style="margin-bottom: 0px;">
+                        <a href="mailto:xinyulee@uw.edu" style="margin-left: 5px;">
+                            <svg aria-labelledby="simpleicons-gmail-icon" width = '25' height = '25' role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><title id="simpleicons-gmail-icon">Gmail icon</title><path d="M24 4.5v15c0 .85-.65 1.5-1.5 1.5H21V7.387l-9 6.463-9-6.463V21H1.5C.649 21 0 20.35 0 19.5v-15c0-.425.162-.8.431-1.068C.7 3.16 1.076 3 1.5 3H2l10 7.25L22 3h.5c.425 0 .8.162 1.069.432.27.268.431.643.431 1.068z"/></svg>
+                        </a>
+                    </p>
+                </div>
+                </div>
+                <hr class="my-4">
+                <div class="jumbotron p-3 p-md-5 text-white rounded" style="background-image: url('images/header.jpg'); background-position: center; background-repeat: no-repeat; background-size: cover; margin-bottom: 0px;">
+                        <div class="col-md-6 px-0" style="border-top-width: 20px; padding-bottom: 0px; padding-top: 0px; padding-right: 20px; padding-left: 20px; margin-right: 5px; margin-left: 5px; margin-top: 25px; margin-bottom: 25px;">
+                            <h1 class="display-5 font-italic">Best coffee shops around the city of Seattle</h1>
+                            <p class="lead my-4">When speaking of coffee, the city of Seattle has much more than just Starbucks and Tullly's. Independent coffee shops line the streets around the emerald city and there are just so many of them to explore. The following are my top 10 favorites coffee shops in Seattle and they are perfect for either rainy gloomy days or a sunny summer day!</p>
+                        </div>
+                </div>
+            </header>
+        </div>
+
+    <main>
+        <div class="container" style="padding-top: 0.5rem; padding-bottom: 0.5rem;">
+            <div class="row">
+
+            <!-- START coffee shop intros -->
+            <div class="row featurette" style="margin-right: 0px; margin-left: 0px;">
+                <div class="col-md-7">
+                    <h2><a class="featurette-heading">Slate Coffee Roasters</a></h2>
+                    <a href="https://www.google.com/maps/place/Slate+Coffee+Roasters/@47.6141833,-122.3695176,13z/data=!4m8!1m2!2m1!1sSlate+Coffee+Roasters!3m4!1s0x5490148ad93d8deb:0xe5d40f4f78527b4b!8m2!3d47.6611211!4d-122.3138822" class="" style="padding-right: 0px; margin-right: 10px;">1309 NE 45th St, Seattle, WA 98105</a>
+                    <a class="btn btn-secondary btn-sm" href="https://slatecoffee.com/" role="button">Visit site »</a>
+                    <p class="lead">The first time I had Slate's latte, I was surprised at how balanced the taste of milk and coffee can be. The espresso is done in the just right texture to achieve that Yin-Yang balanced sip for a morning on a rainy day!</p>
+                    <p class="lead"><strong><em>Jenny's Recommendations: </em></strong> Slate's milk has a very special taste and I recommend any of their warm coffee with milk. Don't just order and go, sit down for a bit and enjoy the brick and mortar environment!</p>
+                </div>
+                <div class="col-md-5">
+                    <img class="featurette-image img-fluid mx-auto" src="images/slatecoffeeroaster.jpg" alt="Slate Coffee Roasters" style="">
+                </div>
+            </div>
+
+            <hr class="featurette-divider">
+
+            <div class="row featurette" style="margin-right: 0px; margin-left: 0px;">
+                <div class="col-md-7 order-md-2">
+                    <h2><a class="featurette-heading">Mr. West Cafe Bar</a></h2>
+                    <a href="https://www.google.com/maps/place/Mr.+West+Cafe+Bar/@47.6141272,-122.3366871,17z/data=!3m1!4b1!4m5!3m4!1s0x5490154ac6c23c9f:0x2016496655a8404c!8m2!3d47.6141236!4d-122.3344984" class="" style="padding-right: 0px; margin-right: 10px;">720 Olive Way, Seattle, WA 98101</a>
+                    <a class="btn btn-secondary btn-sm" href="http://mrwestcafebar.com/" role="button">Visit site »</a>
+                    <p class="lead">Stepping in Mr.West's Cafe Bar feels like stepping in a mini botanic garden. You are surrounded by different kinds of succulent plants and the white marble table goes nicely with the golden utensils. A cup of matcha tea latte along with a thick slice of avocado toast makes all the gloomy day go away!</p>
+                    <p class="lead"><strong><em>Jenny's Recommendations: </em></strong> Awesome place to kill some time. Don't forget to order a runny poached egg with the avocado toast if you are both an egg lover and an avocado lover.</p>
+                </div>
+                <div class="col-md-5 order-md-1">
+                    <img class="featurette-image img-fluid mx-auto" src="images/MrWest.jpg" alt="Slate Coffee Roasters" style="">
+                </div>
+            </div>
+
+            <hr class="featurette-divider">
+
+            <div class="row featurette" style="margin-right: 0px; margin-left: 0px;">
+                <div class="col-md-7">
+                    <h2><a class="featurette-heading">Anchorhead Coffee</a></h2>
+                    <a href="https://www.google.com/maps/place/Anchorhead+Coffee/@47.6134039,-122.3369525,17z/data=!3m1!4b1!4m5!3m4!1s0x5490154ad3c3da81:0x16f52b4ccbc2256d!8m2!3d47.6134003!4d-122.3347638" class="" style="padding-right: 0px; margin-right: 10px;">CenturyLink Plaza, 1600 7th Ave #105, Seattle, WA 98101</a>
+                    <a class="btn btn-secondary btn-sm" href="http://www.anchorheadcoffee.com/" role="button">Visit site »</a>
+                    <p class="lead">Anchorhead Coffee is the <strong>PLACE</strong> to go for a hot summer day. Cold brew is good on its own or with milk mixed in. If you do order cold brew, pair it with the famous Quaffle(cinnamon roll waffle!) and double that pleasure on your tongue.</p>
+                    <p class="lead"><strong><em>Jenny's Recommendations: </em></strong> Anchorhead has great pastries. It will satisfy your desire no matter you are into savory like me, or you have a sweet tooth. Do try their bacon cheddar chive scone if you are into savory! </p>
+                </div>
+                <div class="col-md-5">
+                    <img class="featurette-image img-fluid mx-auto" src="images/anchorhead.jpg" alt="Anchorhead Coffee" style="">
+                </div>
+            </div>
+
+            <hr class="featurette-divider">
+
+            <div class="row featurette" style="margin-right: 0px; margin-left: 0px;">
+                <div class="col-md-7 order-md-2">
+                    <h2><a class="featurette-heading">MiiR Flagship</a></h2>
+                    <a href="https://www.google.com/maps/place/MiiR+Flagship/@47.6488588,-122.3446566,17z/data=!3m1!4b1!4m5!3m4!1s0x549015022c95ddd1:0x975ffa16c576cc82!8m2!3d47.6488552!4d-122.3424679" class="" style="padding-right: 0px; margin-right: 10px;">3400 Stone Way N, Seattle, WA 98103</a>
+                    <a class="btn btn-secondary btn-sm" href="https://www.miir.com/pages/flagship" role="button">Visit site »</a>
+                    <p class="lead">If you are looking for a place to go on a rainy day, MiiR Flagship is a great choice! You can enjoy the emerald city style romance simply by sitting at the window seats and watch the rain drops. Cold brew or hot latte, anything is good here!</p>
+                    <p class="lead"><strong><em>Jenny's Recommendations: </em></strong> MiiR Flagship is right around the corner of Gas Work park. Take a walk around Gas Work park after coffee is never a bad idea on a sunny Seattle day! </p>
+                </div>
+                <div class="col-md-5 order-md-1">
+                    <img class="featurette-image img-fluid mx-auto" src="images/MiiR.jpg" alt="MiiR Flagship" style="">
+                </div>
+            </div>
+
+            <hr class="featurette-divider">
+
+            <div class="row featurette" style="margin-right: 0px; margin-left: 0px;">
+                <div class="col-md-7">
+                    <h2><a class="featurette-heading">Elm Coffee Roasters</a></h2>
+                    <a href="https://www.google.com/maps/place/Elm+Coffee+Roasters/@47.6001396,-122.3332607,17z/data=!3m1!4b1!4m5!3m4!1s0x54906abae02182bf:0xd6dab1e28d5941b0!8m2!3d47.600136!4d-122.331072" class="" style="padding-right: 0px; margin-right: 10px;">240 2nd Ave S #103, Seattle, WA 98104</a>
+                    <a class="btn btn-secondary btn-sm" href="http://elmcoffeeroasters.com/?gclid=EAIaIQobChMI_cfin_qm2wIVh9lkCh1OFQKmEAAYASAAEgLHLvD_BwE" role="button">Visit site »</a>
+                    <p class="lead">If you are visiting downtown Seattle, try Elm's coffee if you have some time to stop for a break. White walls and wooden chairs makes the simplist but stylist place to have a cup of warm latte.</p>
+                    <p class="lead"><strong><em>Jenny's Recommendations: </em></strong> Sit by the bar if you are interested in coffee. The baristas are friendly here and would love to chat with you about coffee. </p>
+                </div>
+                <div class="col-md-5">
+                    <img class="featurette-image img-fluid mx-auto" src="images/elmcoffee.jpg" alt="Elm Coffee Roasters" style="">
+                </div>
+            </div>
+            
+            <hr class="featurette-divider">
+
+            <div class="row featurette" style="margin-right: 0px; margin-left: 0px;">
+                <div class="col-md-7 order-md-2">
+                    <h2><a class="featurette-heading">Caffe Umbria</a></h2>
+                    <a href="https://www.google.com/maps/place/Caffe+Umbria/@47.6228543,-122.3726508,14z/data=!4m8!1m2!2m1!1sCaffe+Umbria!3m4!1s0x5490153c31e89f0d:0xa265b8e72e989beb!8m2!3d47.6298912!4d-122.3411757" class="" style="padding-right: 0px; margin-right: 10px;">3531, 1201 Westlake Ave N, Seattle, WA 98109</a>
+                    <a class="btn btn-secondary btn-sm" href="https://caffeumbria.com/" role="button">Visit site »</a>
+                    <p class="lead">If you happen to walk around south lake union, go to Caffe Umbria and have a simple espresso. This location is so close to the park and you can get up and enjoy the lake view anytime you want!</p>
+                    <p class="lead"><strong><em>Jenny's Recommendations: </em></strong> I had one of the best prosciutto arugula panini sandwich here! Pair it with an iced tea and say hello to Summer! </p>
+                </div>
+                <div class="col-md-5 order-md-1">
+                    <img class="featurette-image img-fluid mx-auto" src="images/cafeumbria.jpg" alt="Caffe Umbria" style="">
+                </div>
+            </div>
+
+            <hr class="featurette-divider">
+
+            <div class="row featurette" style="margin-right: 0px; margin-left: 0px;">
+                <div class="col-md-7">
+                    <h2><a class="featurette-heading">Storyville Coffee</a></h2>
+                    <a href="https://www.google.com/maps/place/Storyville+Coffee+Queen+Anne/@47.638268,-122.3589853,17z/data=!3m1!4b1!4m5!3m4!1s0x0:0x48d3d067b4321c81!8m2!3d47.6382644!4d-122.3567966" class="" style="padding-right: 0px; margin-right: 10px;">2128 Queen Anne Ave N, Seattle, WA 98109</a>
+                    <a class="btn btn-secondary btn-sm" href="https://www.storyville.com/" role="button">Visit site »</a>
+                    <p class="lead">This Storyville location is not as crowded as the Pike Place market one. Offers the high quality Storyville coffees and enjoy a quiet and nice afternoon here.</p>
+                    <p class="lead"><strong><em>Jenny's Recommendations: </em></strong> This location is neat as it is lcoated in Queen Anne. There are so many nice and cute shops and boutiques around it and girls would love to walk around them after coffee. </p>
+                </div>
+                <div class="col-md-5">
+                    <img class="featurette-image img-fluid mx-auto" src="images/storyville.jpg" alt="Storyville Coffee" style="">
+                </div>
+            </div>
+
+            <hr class="featurette-divider">
+
+            <div class="row featurette" style="margin-right: 0px; margin-left: 0px;">
+                <div class="col-md-7 order-md-2">
+                    <h2><a class="featurette-heading">La Marzocco Cafe</a></h2>
+                    <a href="https://www.google.com/maps/place/La+Marzocco+Cafe/@47.6228231,-122.35733,17z/data=!3m1!4b1!4m5!3m4!1s0x549015447157b621:0x3426ca294673ab1b!8m2!3d47.6228195!4d-122.3551413" class="" style="padding-right: 0px; margin-right: 10px;">472 1st Ave N, Seattle, WA 98109</a>
+                    <a class="btn btn-secondary btn-sm" href="http://www.lamarzoccousa.com/" role="button">Visit site »</a>
+                    <p class="lead">Into music and coffee? Then La Marzocco Cafe is the place for you! FM90.3 radio station is in the same building as the La Marzocco Cafe. Take a afternoon and explore the neighborhood around Seattle Center!</p>
+                    <p class="lead"><strong><em>Jenny's Recommendations: </em></strong> Marscapone & Avocado toasts are awesome choices if you are looking for something to eat with your drink. </p>
+                </div>
+                <div class="col-md-5 order-md-1">
+                    <img class="featurette-image img-fluid mx-auto" src="images/LaMarzoccoCafe.jpg" alt="La Marzocco Cafe" style="">
+                </div>
+            </div>
+
+            <hr class="featurette-divider">
+
+            <div class="row featurette" style="margin-right: 0px; margin-left: 0px;">
+                    <div class="col-md-7">
+                        <h2><a class="featurette-heading">Cafe Presse</a></h2>
+                        <a href="https://www.google.com/maps/place/Cafe+Presse/@47.6120835,-122.3191707,17z/data=!3m1!4b1!4m5!3m4!1s0x54906ace95908f43:0x140e5489ea703d25!8m2!3d47.6120799!4d-122.316982" class="" style="padding-right: 0px; margin-right: 10px;">1117 12th Ave, Seattle, WA 98122</a>
+                        <a class="btn btn-secondary btn-sm" href="http://cafepresseseattle.com/home/" role="button">Visit site »</a>
+                        <p class="lead">Unlike the other coffee shops, Cafe Presse is a French cafe and bar. You can get both great drinks and great coffee here. If you happen to be in the capital hill neighborho on weekends, come and try their brunch!</p>
+                        <p class="lead"><strong><em>Jenny's Recommendations: </em></strong> If you are into egg and cheese just like I do, then you shouldn't miss out on their croque madame or baked eggs! </p>
+                    </div>
+                    <div class="col-md-5">
+                        <img class="featurette-image img-fluid mx-auto" src="images/cafepresse.jpg" alt="Cafe Presse" style="">
+                    </div>
+                </div>    
+
+            <hr class="featurette-divider">
+
+            <div class="row featurette" style="margin-right: 0px; margin-left: 0px;">
+                <div class="col-md-7 order-md-2">
+                    <h2><a class="featurette-heading">Cherry Street Public House</a></h2>
+                    <a href="https://www.google.com/maps/place/Cherry+Street+Public+House/@47.600358,-122.3350662,17z/data=!3m1!4b1!4m5!3m4!1s0x54906abad47fef4d:0x2f6af8dc8056df9a!8m2!3d47.6003544!4d-122.3328775" class="" style="padding-right: 0px; margin-right: 10px;">210 Occidental Ave S, Seattle, WA 98104</a>
+                    <a class="btn btn-secondary btn-sm" href="http://www.cherrystreetpublichouse.com/" role="button">Visit site »</a>
+                    <p class="lead">If you happen to be around the Union Square area in downtown Seattle, then go to Cherry Street Public House and try their bagles and coffee!</p>
+                    <p class="lead"><strong><em>Jenny's Recommendations: </em></strong> Cherry Street Public House's homemade Quiche will make your mouth water everywhere because they are just simply a slice of heaven! </p>
+                </div>
+                <div class="col-md-5 order-md-1">
+                    <img class="featurette-image img-fluid mx-auto" src="images/cherrystreet.jpg" alt="Cherry Street Public House" style="">
+                </div>
+            </div>
+
+            <hr class="featurette-divider">
+            <!-- END coffee shop intros -->
+
+            </div>
+        </div>
+        <div class="container" style="padding-top: 0.5rem; padding-bottom: 0.5rem;"></div>
+        <div class="container">
+            <h2><a class="featurette-heading">Coffee Shop Map</a></h2>
+            <div id="mapid"></div>
+            <p>&copy; created by Jenny Li</p>
+        </div>
+
+    </main>
+
+    <!-- jQuery library (required by Bootstrap's JavaScript library) -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+
+    <!-- PopperJS library (required by Bootstrap's JavaScript library) -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js" integrity="sha384-cs/chFZiN24E4KMATLdqdvsezGxaGsi4hLGOzlXwp5UZB1LY//20VyM2taTB4QvJ"
+        crossorigin="anonymous"></script>
+
+    <!-- Bootstrap v4.1.0 JavaScript library -->
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm"
+        crossorigin="anonymous"></script>
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fetch/2.0.4/fetch.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.1/moment-with-locales.min.js"></script>
+    <script src="js/app.js"></script>
+    </body>
+</html>
