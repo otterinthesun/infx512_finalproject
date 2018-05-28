@@ -44,4 +44,4 @@ Seattle, WA
 
 **What is this project about?**
 
-This project is about the 
+This project is about my favorite coffee shops around Seattle. I listed a total of 10 coffee shops and worte some recommendations about them. In the end, I put together a map to visualize these coffee shops.
